@@ -1,4 +1,7 @@
 package SmokeTest;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -6,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import Pages.CreateNewDesignPage;
-import dev.failsafe.internal.util.Assert;
+import Pages.Home;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CreatDesignSmokeTest {
@@ -15,8 +18,15 @@ public class CreatDesignSmokeTest {
 	
 	@BeforeTest
 	public void setUp() {
-		WebDriverManager.chromedriver().setup();
+		WebDriverManager.chromedriver().setup();		
 		dr = new ChromeDriver();
+		dr.get("https://brandcrowd.com/maker/mydesigns/logodrafts/bfc53a38-e7e3-40c3-ada0-a11bd83829dc/templatetypes?searchTerm=tech+challenge");
+		dr.manage().window().maximize();
+		
+		Home login = new Home(dr);
+		login.setEmail();
+		login.setPassword();
+		login.setLoginBtn();
 	}
 	
 	@Test
@@ -24,14 +34,14 @@ public class CreatDesignSmokeTest {
 					
 		CreateNewDesignPage obj = new CreateNewDesignPage(dr);
 		
-		dr.get("https://brandcrowd.com/maker/mydesigns/logodrafts/bfc53a38-e7e3-40c3-ada0-a11bd83829dc/templatetypes?searchTerm=tech+challenge");
-		dr.manage().window().maximize();
-		
 		obj.isVisiBrandLogo();
 		
-		obj.isVisiFooter();
-		
 		obj.isVisiInsta();	
+		
+//		JavascriptExecutor js = (JavascriptExecutor)dr;
+//		js.executeAsyncScript("window.scrollBy(500,document.body.scrollHeight)");
+		
+		obj.isVisiFooter();		
 		
 		}
 	
