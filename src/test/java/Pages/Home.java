@@ -1,16 +1,20 @@
 package Pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Home {
 	
 	WebDriver dr = null;
 	By MyAccount = By.xpath("//span[contains(text(),'My Account')]");
-	By Email = By.xpath("//header/div[@id='bc-global-navigation']//input[2]");
-	By LoginBtn = By.xpath("//header/div[@id='bc-global-navigation']//span[contains(text(),'Login')");
-	By Password = By.xpath("//header/div[@id='bc-global-navigation']//input[3]");
-	By CreateNewDesign_btn = By.xpath("//span[contains(text(),'Create new design')]");
+	By Email = By.xpath("//*[@id=\"signin\"]/input[2]");
+	By LoginBtn = By.xpath("//*[@id=\"signin\"]/div/div/button/span");
+	By Password = By.xpath("//*[@id=\"signin\"]/input[3]");
+	By CreateNewDesign_btn = By.xpath("//*[@id=\"__layout\"]/section/header/div[3]/div/div/div/div[2]/a");
 		
 	public Home(WebDriver dr) {
 		this.dr = dr;
@@ -29,6 +33,8 @@ public class Home {
 		dr.findElement(Password).sendKeys("Challenge1");
 	}
 	public void seCreateNewDesign_btn() {
+		WebDriverWait wait = new WebDriverWait(dr, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("__JSBridgeIframe_1.0__")));
 		dr.findElement(CreateNewDesign_btn).click();
 	}
 }
