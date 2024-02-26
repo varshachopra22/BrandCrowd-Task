@@ -40,7 +40,7 @@ public class CreateNewDesignSearchTest {
 		
 		CreateNewDesignPage obj = new CreateNewDesignPage(dr);
 		
-//		obj.setSearchInput("test");
+		obj.setSearchInput("test");
 		
 		obj.clickSearchBtn();
 		
