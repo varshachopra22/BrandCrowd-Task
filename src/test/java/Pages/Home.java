@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Home {
 	
 	WebDriver dr = null;
+	
+	//Home Page locators
 	By MyAccount = By.xpath("//span[contains(text(),'My Account')]");
 	By Email = By.xpath("//*[@id=\"signin\"]/input[2]");
 	By LoginBtn = By.xpath("//*[@id=\"signin\"]/div/div/button/span");
@@ -20,6 +22,7 @@ public class Home {
 		this.dr = dr;
 	}
 	
+	//Login Page methods
 	public void setMyAccount() {
 		dr.findElement(MyAccount).click();
 	}

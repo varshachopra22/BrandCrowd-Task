@@ -18,28 +18,29 @@ public class CreateNewDesignSearchTest {
 	
 	@BeforeTest
 	public void setUpTest() {
+		
+		//initialising Webdriver
 		WebDriverManager.chromedriver().setup();
 		dr = new ChromeDriver();
 		
+		//Opening URL in browser
 		dr.get("https://brandcrowd.com/maker/mydesigns/logodrafts/bfc53a38-e7e3-40c3-ada0-a11bd83829dc/templatetypes?searchTerm=tech challenge");
 		dr.manage().window().maximize();
 		
+		//Logging in
 		Home login = new Home(dr);
-		//login.setMyAccount();
 		login.setEmail();
-		//login.setLoginBtn();
 		login.setPassword();
 		login.setLoginBtn();
 	}
 	
 	@Test
+	//Search Functionality test
 	public static void SearchTest() {
 		
 		CreateNewDesignPage obj = new CreateNewDesignPage(dr);
 		
-//		dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		
-		obj.setSearchInput("test");
+//		obj.setSearchInput("test");
 		
 		obj.clickSearchBtn();
 		
@@ -50,6 +51,6 @@ public class CreateNewDesignSearchTest {
 	@AfterTest
 	public void tearDownTest() {
 		dr.close();
-		System.out.println("Test completed successfully");
+		System.out.println("Search Test completed");
 	}
 }

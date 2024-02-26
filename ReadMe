@@ -18,5 +18,4 @@ the webpage is developed for any error conditions.
 For Test reporting I have chosen TestNG as the results can also be viewed in HTML format in this location 
 - BrandCrowd\test-output\index.html
 
-You can run the tests, CreateDesignSmokeTest and CreateNewDesignSearchTest by running it as TestNg Test. 
-But before running the tests you will need to manually sign in. 
+You can run the tests, CreateDesignSmokeTest and CreateNewDesignSearchTest by running it as TestNg Test.

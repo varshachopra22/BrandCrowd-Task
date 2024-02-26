@@ -14,6 +14,8 @@ import dev.failsafe.internal.util.Assert;
 public class CreateNewDesignPage {
 	
 	WebDriver dr = null;
+	
+	//CreateNewDesign Page locators
 	By SearchInput = By.id("searchTerm");
 	By SearchBtn = By.xpath("//span[contains(text(),'search')]");
 	By SearchText = By.xpath("//h1[contains(text(),'Templates')]");
@@ -25,11 +27,11 @@ public class CreateNewDesignPage {
 		this.dr = dr;
 	}
 	
+	//methods for Search Functionality
 	public void setSearchInput(String text) {
-//		WebDriverWait wait = new WebDriverWait(dr, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("__JSBridgeIframe_1.0__")));
+		WebDriverWait wait = new WebDriverWait(dr, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("searchTerm")));
 	
-		dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		dr.findElement(SearchInput).clear();
 		dr.findElement(SearchInput).sendKeys(text);
 	}
@@ -42,6 +44,8 @@ public class CreateNewDesignPage {
 		if(txt = true)
 			System.out.println("Search Result Visible");
 	}
+	
+	//Smoke Test methods
 	public void isVisiBrandLogo() {
 		boolean logo = dr.findElement(BrandLogo).isDisplayed();
 		if(logo = true)
